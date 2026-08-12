@@ -1,6 +1,15 @@
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 
+export async function generateStaticParams() {
+  const supabase = createClient();
+  const { data, error } = await supabase.from("portfolio").select("id");
+
+  return data.map((row) => ({
+    id: String(row.id),
+  }));
+}
+
 export default async function Portfolio({ params }) {
   const supabase = createClient();
   const { id } = await params;
