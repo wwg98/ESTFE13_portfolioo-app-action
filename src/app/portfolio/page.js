@@ -3,8 +3,8 @@ import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 
 export default async function Portfolio({ params }) {
-  const params = await params;
-  const page = Number(params.page ?? 1);
+  const pages = await params;
+  const page = Number(pages.page ?? 1);
   const supabase = createClient();
   //페이지네이션 설정
   const PAGE_SIZE = 6;
